@@ -14,7 +14,7 @@ def home():
         data = json.loads(json_string)
 
         # Pass the results to the template for display
-        return render_template('./home.html', results=data['results'])
+        return render_template('../home.html', results=data['results'])
     else:
         return "Error retrieving random users."
 
