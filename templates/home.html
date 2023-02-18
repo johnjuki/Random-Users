@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Random Users</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Random Users</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #111827;
+      color: #ffffff;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: #1F2937;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      width: 40%;
+      margin: auto;
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    h3 {
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .dob {
+      display: flex;
+      align-items: center;
+    }
+
+    .card .dob p {
+      margin-right: 10px;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>
-        100 Random male users:
-    </h1>
-    <ol>
-        {% for name in names %}
-        <li>{{ name }}</li>
-        {% endfor %}
-    </ol>
+  <h1>100 Random Users</h1>
+  {% for result in results %}
+  <div class="card">
+    <img src="{{ result['picture']['large'] }}" alt="Picture">
+    <div class="info">
+      <h2> {{ result['name']['first'] }} {{ result['name']['last'] }}</h2>
+      <h3>{{ result['email'] }}</h3>
+      <p>{{ result['phone'] }}</p>
+      <div class="dob">
+        <p>Date of Birth: {{ result['dob']['date'][:10] }}</p>
+        <p>Age: {{ result['dob']['age'] }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </body>
+
 </html>
